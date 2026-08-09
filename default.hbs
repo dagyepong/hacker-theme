@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{meta_title}}</title>
+    
+    <!-- Retro Terminal Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Prism.js Terminal / Dark Syntax Highlighting Theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+
+    <link rel="stylesheet" href="{{asset "css/screen.css"}}">
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+    <div class="terminal-wrapper">
+        <header class="site-header">
+            <a href="{{@site.url}}" class="site-title">&gt; cd /home/homelab ~</a>
+            <span class="blink-cursor">_</span>
+        </header>
+
+        <main class="site-content">
+            {{{body}}}
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; {{date format="YYYY"}} Nana // System Operational.</p>
+        </footer>
+    </div>
+
+    {{ghost_foot}}
+
+    <!-- Prism.js Core & Common Homelab Languages (YAML, Docker, Bash, JSON) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

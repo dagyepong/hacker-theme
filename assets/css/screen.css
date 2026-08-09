@@ -1,0 +1,139 @@
+:root {
+    --bg-color: #0b0f0e;
+    --card-bg: #111715;
+    --text-primary: #00ff66;
+    --text-dimmed: #008f39;
+    --border-color: #1a2b22;
+    --accent-orange: #ff9900;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+}
+
+.terminal-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.05);
+}
+
+.site-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.site-title {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.blink-cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.system-status {
+    font-size: 0.85rem;
+    color: var(--text-dimmed);
+    margin-bottom: 0.5rem;
+}
+
+.terminal-rule {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.post-card {
+    margin-bottom: 2rem;
+}
+
+.post-meta {
+    font-size: 0.85rem;
+    color: var(--text-dimmed);
+}
+
+.post-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.post-title a:hover {
+    color: var(--accent-orange);
+    text-decoration: underline;
+}
+
+.post-excerpt {
+    color: #a0aec0;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+/* Single Post & Content Styling */
+.back-link a {
+    color: var(--text-dimmed);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.single-post h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.post-content p {
+    margin-bottom: 1.2rem;
+    color: #c0d0c5;
+}
+
+.post-content pre {
+    background: #050807 !important;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border-radius: 4px;
+}
+
+.post-content code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent-orange);
+}
+
+.post-content pre code {
+    color: #00ff66;
+}
+
+.site-footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-dimmed);
+    text-align: center;
+}

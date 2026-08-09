@@ -1,0 +1,10 @@
+{
+  "name": "hacker-theme",
+  "author": "Nana",
+  "version": "1.0.0",
+  "description": "A retro terminal hacker vibe theme for homelab docs",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT"
+}

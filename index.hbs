@@ -1,0 +1,22 @@
+{{!< default}}
+
+<div class="post-feed">
+    <div class="feed-header">
+        <p class="system-status">STATUS: ONLINE // ARCH_LINUX_HOST // LOGS DETECTED:</p>
+        <hr class="terminal-rule">
+    </div>
+
+    {{#foreach posts}}
+        <article class="post-card {{post_class}}">
+            <div class="post-meta">
+                <span class="post-date">[{{date format="YYYY-MM-DD"}}]</span>
+            </div>
+            <h2 class="post-title">
+                <a href="{{url}}">&gt; {{title}}</a>
+            </h2>
+            <p class="post-excerpt">{{excerpt characters="120"}}...</p>
+        </article>
+    {{/foreach}}
+</div>
+
+{{pagination}}
