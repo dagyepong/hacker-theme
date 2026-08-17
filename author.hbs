@@ -1,38 +1,52 @@
 {{!< default}}
 
 <div class="post-feed">
+    
+    <!-- Author Profile Command Header -->
     {{#author}}
-    <div style="margin-bottom: 2.5rem; border-left: 2px solid var(--highlight-color); padding-left: 1rem;">
-        <div class="system-status">&gt; cat /etc/passwd/author_{{slug}}</div>
+    <div class="feed-header" style="margin-bottom: 2.5rem; border-left: 2px solid var(--highlight-color); padding-left: 1rem;">
+        <p class="system-status">&gt; cat /etc/passwd/author_{{slug}}</p>
         <h1 class="post-title" style="font-size: 1.5rem; margin: 0.5rem 0;">{{name}}</h1>
         {{#if bio}}
-        <p class="post-excerpt" style="margin-bottom: 0.75rem;">{{bio}}</p>
+            <p class="post-excerpt" style="margin-bottom: 1rem; color: #d0d0d0;">{{bio}}</p>
         {{/if}}
         <div class="post-meta">
-            {{#if location}}[location: {{location}}]{{/if}}
-            {{#if website}}[web: <a href="{{website}}" target="_blank" style="text-decoration: underline;">{{website}}</a>]{{/if}}
+            {{#if location}}<span style="margin-right: 1rem;">[location: {{location}}]</span>{{/if}}
+            {{#if website}}<span>[web: <a href="{{website}}" target="_blank" rel="noopener" style="text-decoration: underline;">{{website}}</a>]</span>{{/if}}
         </div>
     </div>
     {{/author}}
 
     <hr class="terminal-rule">
-    <div class="system-status">&gt; find ./posts --author=match</div>
+    <div class="system-status">&gt; find ./posts --author=matched_files</div>
 
+    <!-- Author's Post Loop -->
     {{#foreach posts}}
-    <article class="post-card {{post_class}}">
-        <div class="post-meta">
-            <span class="post-date">[{{date format="YYYY-MM-DD"}}]</span>
-        </div>
-        <h2 class="post-title">
-            <a href="{{url}}">&gt; {{title}}</a>
-        </h2>
-        {{#if excerpt}}
-            <p class="post-excerpt">{{excerpt words="25"}}...</p>
-        {{/if}}
-    </article>
+        <article class="post-card {{post_class}}">
+            <div class="post-meta">
+                <span class="post-date">[{{date format="YYYY-MM-DD"}}]</span>
+                {{#if tags}}
+                    <span class="post-tags">
+                        {{#foreach tags}}
+                            <a href="{{url}}" class="terminal-tag" title="{{name}}">--tag={{slug}}</a>{{^last}} {{/last}}
+                        {{/foreach}}
+                    </span>
+                {{/if}}
+            </div>
+            <h2 class="post-title">
+                <a href="{{url}}">&gt; {{title}}</a>
+            </h2>
+            <p class="post-excerpt">{{excerpt characters="120"}}...</p>
+        </article>
     {{/foreach}}
+</div>
 
-    <div style="margin-top: 3rem;">
-        <a href="{{@site.url}}" class="contact-prompt">&gt; cd .. (back to root)</a>
+{{pagination}}
+
+<!-- Back to root navigation -->
+<div class="terminal-contact-section" style="margin-top: 3rem;">
+    <hr class="terminal-rule">
+    <div class="contact-block">
+        <a href="{{@site.url}}" class="contact-prompt">&gt; cd .. (return to home)</a>
     </div>
 </div>
