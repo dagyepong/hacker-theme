@@ -40,3 +40,30 @@ pre, code, .terminal-prompt {
     box-shadow: var(--terminal-box-glow);
     color: var(--terminal-fg);
 }
+
+/* =================================================================
+   Koenig Editor Layout Classes (Required by Ghost)
+   ================================================================= */
+
+.kg-width-wide {
+    max-width: 1040px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.kg-width-full {
+    max-width: 100vw;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+/* Ensure images inside cards conform to terminal borders */
+.kg-width-wide img,
+.kg-width-full img {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--terminal-dim);
+    box-shadow: var(--terminal-box-glow);
+}
