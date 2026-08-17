@@ -8,6 +8,7 @@
     --terminal-fg: #ff3333;          /* High-intensity terminal red */
     --terminal-dim: #991f1f;         /* Faded red for borders/comments */
     --terminal-accent: #ff5c5c;      /* Bright highlight red */
+    --text-color: var(--terminal-fg); /* Fallback compatibility variable */
     
     /* Glow Effects */
     --terminal-glow: 0 0 8px rgba(255, 51, 51, 0.6), 
@@ -98,31 +99,25 @@ code {
 }
 
 /* =================================================================
-   Blinking Terminal Cursor Animation
+   Terminal Blinking Cursor Animation (Restored Original Logic)
    ================================================================= */
 
-.terminal-cursor,
-.cursor,
-.gh-cursor,
-#cursor,
-span.cursor {
-    display: inline-block;
-    width: 0.55em;
-    height: 1.1em;
-    background-color: var(--terminal-fg);
-    animation: terminal-blink 1s steps(2, start) infinite;
-    vertical-align: -0.15em;
-    margin-left: 3px;
-    box-shadow: var(--terminal-glow);
+@keyframes terminal-blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
 }
 
-@keyframes terminal-blink {
-    0%, 100% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
+.terminal-cursor,
+.system-status::after,
+.cursor,
+.gh-cursor,
+#cursor {
+    content: "_";
+    display: inline-block;
+    animation: terminal-blink 0.8s steps(1, start) infinite;
+    color: var(--text-color);
+    font-weight: bold;
+    text-shadow: var(--terminal-glow);
 }
 
 /* =================================================================
@@ -143,7 +138,7 @@ span.cursor {
     margin-right: calc(50% - 50vw);
 }
 
-/* Safe Image Display Rules (Prevents accidental hiding/zero-sizing) */
+/* Safe Image Display Rules */
 img {
     display: block;
     max-width: 100%;
