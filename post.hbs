@@ -1,14 +1,23 @@
 {{!< default}}
 
 {{#post}}
-<article class="single-post {{post_class}}">
+<article class="single-post post-card {{post_class}}" style="max-width: 800px; margin: 0 auto;">
     <header class="post-header">
-        <p class="back-link"><a href="{{@site.url}}">&lt; cd ..</a></p>
-        <span class="post-meta">[{{date format="YYYY-MM-DD"}}]</span>
-        <h1>{{title}}</h1>
+        <p class="back-link"><a href="{{@site.url}}" class="contact-prompt">&gt; cd ..</a></p>
+        <div class="post-meta">
+            <span class="post-date">[{{date format="YYYY-MM-DD"}}]</span>
+            {{#if tags}}
+                <span class="post-tags">
+                    {{#foreach tags}}
+                        <a href="{{url}}" class="terminal-tag" title="{{name}}">--tag={{slug}}</a>{{^last}} {{/last}}
+                    {{/foreach}}
+                </span>
+            {{/if}}
+        </div>
+        <h1 class="post-title" style="font-size: 1.5rem; margin: 1rem 0 1.5rem 0;">&gt; {{title}}</h1>
     </header>
 
-    <div class="post-content">
+    <div class="post-content" style="font-size: 0.95rem; color: #c0c0c0; line-height: 1.7;">
         {{content}}
     </div>
 </article>
