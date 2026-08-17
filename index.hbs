@@ -30,6 +30,23 @@
 
 <div class="terminal-contact-section">
     <hr class="terminal-rule">
+
+    <!-- Active System Users Manifest -->
+    <div class="contact-block" style="margin-bottom: 2rem;">
+        <p class="contact-prompt">&gt; cat /etc/passwd --active-users</p>
+        {{#get "authors" limit="all" include="count.posts"}}
+            <ul class="contact-links" style="margin-top: 0.5rem;">
+                {{#foreach authors}}
+                    <li style="margin-bottom: 0.3rem;">
+                        <span class="key">user[{{slug}}]:</span> 
+                        <a href="{{url}}" style="text-decoration: underline;">{{name}}</a> 
+                        <span style="color: var(--dim-color);">({{count.posts}} posts)</span>
+                    </li>
+                {{/foreach}}
+            </ul>
+        {{/get}}
+    </div>
+
     <div class="contact-block">
         <p class="contact-prompt">&gt; cat /etc/contact</p>
         <ul class="contact-links">
