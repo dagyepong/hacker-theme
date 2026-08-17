@@ -193,48 +193,59 @@ a:hover {
     display: inline-block;
 }
 
-/* Ghost Image & Media Overrides */
-.post-content img {
+/* =================================================================
+   Ghost Image & Media Rendering Fixes (Critical)
+   ============================================================= */
+
+.post-content img,
+.post-image img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 1.5rem auto;
     border: 1px solid var(--dim-color);
-    filter: brightness(0.9) contrast(1.1);
+    filter: brightness(0.95) contrast(1.05);
 }
 
-.post-content .kg-image-card {
+/* Koenig Editor Cards */
+.kg-image-card {
+    width: 100%;
     margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.post-content .kg-image-card img {
-    margin: 0 auto;
+.kg-image-card img {
+    width: 100%;
+    height: auto;
 }
 
-.post-content .kg-figcaption {
+.kg-figcaption {
     text-align: center;
     font-size: 0.8rem;
     color: var(--dim-color);
     margin-top: 0.5rem;
 }
 
-.post-content .kg-gallery-card {
+.kg-gallery-card {
     margin: 2rem 0;
+    width: 100%;
 }
 
-.post-content .kg-bookmark-card {
+.kg-bookmark-card {
     border: 1px solid var(--dim-color);
     background: rgba(0, 255, 102, 0.02);
     padding: 1rem;
     margin: 2rem 0;
 }
 
-.post-content .kg-bookmark-title {
+.kg-bookmark-title {
     color: var(--text-color);
     font-weight: bold;
 }
 
-.post-content .kg-bookmark-description {
+.kg-bookmark-description {
     color: #b0b0b0;
     font-size: 0.85rem;
 }
