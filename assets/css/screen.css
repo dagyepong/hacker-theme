@@ -186,3 +186,13 @@ a:hover {
     width: 100%;
     height: auto;
 }
+
+/* Terminal Blinking Cursor Animation */
+@keyframes terminal-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.terminal-cursor {
+    animation: terminal-blink 1s infinite;
+}
