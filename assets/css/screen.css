@@ -1,4 +1,4 @@
-/* =================================================================at
+/* =================================================================
    Hacker-Terminal Ghost Theme Stylesheet
    ============================================================= */
 
@@ -159,4 +159,30 @@ a:hover {
     color: var(--bg-color);
     background: var(--highlight-color);
     display: inline-block;
+}
+
+/* Koenig Editor Width Requirements */
+.post-content .kg-width-wide {
+    max-width: 1000px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.post-content .kg-width-full {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.post-content .kg-width-full img,
+.post-content .kg-width-wide img {
+    width: 100%;
+    height: auto;
 }
