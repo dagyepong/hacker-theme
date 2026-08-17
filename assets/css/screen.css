@@ -55,11 +55,12 @@ a:hover {
 }
 
 /* =================================================================
-   Terminal Code Blocks & Readability Fix (Stripped Line Artifacts)
+   Terminal Code Blocks & Readability Fix (Nuclear Line Purge)
    ================================================================= */
 
 pre, code, kbd, samp, 
-.hljs, .line-numbers, [class*="language-"] {
+.hljs, .line-numbers, [class*="language-"],
+div[class*="language-"], figure.kg-code-card {
     background-color: #120808 !important;
     border: 1px solid var(--terminal-dim) !important;
     box-shadow: var(--terminal-box-glow) !important;
@@ -77,15 +78,18 @@ pre {
     word-wrap: break-word;
 }
 
-/* Strip unwanted dividing lines, backgrounds, and shadows inside syntax blocks */
-pre code, pre span, .hljs span, pre * {
+/* Forcefully strip all lines, shadows, and background artifacts from children */
+pre *, code *, .hljs *, [class*="language-"] * {
     border: none !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
     background: transparent !important;
+    background-image: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
     text-decoration: none !important;
-    border-bottom: none !important;
-    background-image: none !important;
 }
 
 code {
@@ -94,16 +98,14 @@ code {
 }
 
 /* =================================================================
-   Blinking Terminal Cursor Animation (Inline Banner Cursor)
+   Blinking Terminal Cursor Animation
    ================================================================= */
 
 .terminal-cursor,
 .cursor,
 .gh-cursor,
 #cursor,
-.site-header .cursor,
-.site-description .cursor,
-p:first-of-type .cursor {
+span.cursor {
     display: inline-block;
     width: 0.55em;
     height: 1.1em;
