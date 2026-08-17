@@ -1,238 +1,162 @@
-/* ==========================================
-   Terminal Cyberpunk Theme - screen.css
-   ========================================== */
+/* =================================================================at
+   Hacker-Terminal Ghost Theme Stylesheet
+   ============================================================= */
 
 :root {
-    --bg-color: #0c0c0c;
-    --text-color: #00ff66; /* Classic terminal green */
-    --dim-text: #008833;
-    --border-color: #00ff66;
-    --accent-color: #ff5555;
-    --highlight-color: #ffff00;
-    --font-mono: 'JetBrains Mono', monospace;
-}
-
-/* Base Styles & Reset */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    --bg-color: #0a0a0a;
+    --text-color: #00ff66;
+    --highlight-color: #33ff99;
+    --dim-color: #008833;
+    --scanline-color: rgba(0, 0, 0, 0.3);
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: var(--font-mono);
-    line-height: 1.6;
-    padding: 2rem 1rem;
-    display: flex;
-    justify-content: center;
+    font-family: "Courier New", Courier, monospace;
+    margin: 0;
+    padding: 2rem;
+    position: relative;
+    min-height: 100vh;
 }
 
 /* CRT Scanline & Vignette Effect */
-body::after {
+body::before {
     content: " ";
     display: block;
     position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, var(--scanline-color) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
     z-index: 99999;
-    background-size: 100% 2px, 3px 100%;
+    background-size: 100% 4px, 6px 100%;
     pointer-events: none;
 }
 
-.terminal-wrapper {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Header & Prompt */
-.site-header {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.site-title {
+a {
     color: var(--text-color);
     text-decoration: none;
-    font-weight: 700;
 }
 
-.site-title:hover {
-    text-shadow: 0 0 8px var(--text-color);
-}
-
-.blink-cursor {
-    animation: blink 1s infinite;
-    font-weight: bold;
-}
-
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-}
-
-/* System Status Banner */
-.system-status {
-    font-size: 0.85rem;
-    color: var(--dim-text);
-    margin-bottom: 0.5rem;
-    word-break: break-all;
+a:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
 }
 
 .terminal-rule {
     border: none;
-    border-top: 1px dashed var(--dim-text);
-    margin: 1rem 0;
+    border-top: 1px dashed var(--dim-color);
+    margin: 1.5rem 0;
 }
 
-/* Post Feed & Cards */
+.system-status {
+    font-size: 0.85rem;
+    color: var(--dim-color);
+    margin-bottom: 0.5rem;
+}
+
 .post-feed {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .post-card {
-    border: 1px solid var(--dim-text);
-    padding: 1.5rem;
-    background: rgba(0, 255, 102, 0.01);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.post-card:hover {
-    border-color: var(--text-color);
-    box-shadow: 0 0 10px rgba(0, 255, 102, 0.15);
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--dim-color);
+    padding-left: 1rem;
 }
 
 .post-meta {
     font-size: 0.85rem;
-    color: var(--dim-text);
-    margin-bottom: 0.5rem;
+    color: var(--dim-color);
+    margin-bottom: 0.25rem;
+}
+
+.post-title {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
 }
 
 .post-title a {
-    color: var(--text-color);
     text-decoration: none;
-    font-size: 1.3rem;
 }
 
 .post-title a:hover {
+    background: transparent;
+    color: var(--highlight-color);
     text-decoration: underline;
 }
 
 .post-excerpt {
-    margin-top: 0.75rem;
     font-size: 0.95rem;
-    color: #cccccc;
+    color: #c0c0c0;
+    line-height: 1.5;
+    margin: 0;
 }
 
-/* Pagination */
-.pagination {
-    margin: 3rem 0;
-    text-align: center;
-    font-size: 0.9rem;
+/* Terminal Tags Styling */
+.post-tags {
+    margin-left: 0.75rem;
 }
 
-.pagination a {
-    color: var(--text-color);
-    text-decoration: underline;
+.terminal-tag {
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-size: 0.8rem;
+    background: rgba(51, 255, 153, 0.05);
+    padding: 0.1rem 0.4rem;
+    border: 1px dashed var(--highlight-color);
+    transition: all 0.2s ease;
 }
 
-/* Contact Section & PGP Terminal Blocks */
+.terminal-tag:hover {
+    background: var(--highlight-color);
+    color: var(--bg-color);
+    text-shadow: none;
+}
+
+/* Contact & GPG Section */
 .terminal-contact-section {
-    margin-top: 4rem;
-}
-
-.contact-block {
-    margin-top: 1.5rem;
+    max-width: 800px;
+    margin: 3rem auto 0 auto;
 }
 
 .contact-prompt {
-    font-size: 0.95rem;
     color: var(--highlight-color);
-    margin-bottom: 0.75rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
 .contact-links {
     list-style: none;
-    padding-left: 1rem;
+    padding-left: 0;
+    margin: 0;
 }
 
 .contact-links li {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
 }
 
 .contact-links .key {
-    color: var(--dim-text);
-    margin-right: 0.5rem;
+    color: var(--dim-color);
 }
 
-.contact-links a {
-    color: var(--text-color);
-    text-decoration: none;
-}
-
-.contact-links a:hover {
-    text-decoration: underline;
-}
-
-/* PGP ASCII Armor Formatting */
-.pgp-block {
-    font-size: 0.8rem;
-    color: var(--dim-text);
-    background: #050505;
+.pgp-block, .pgp-ascii-armor {
+    background: rgba(0, 255, 102, 0.03);
+    border: 1px solid var(--dim-color);
     padding: 1rem;
-    border: 1px solid #1a331a;
+    font-size: 0.8rem;
     overflow-x: auto;
-    margin-bottom: 0.75rem;
+    color: #a0a0a0;
 }
 
 .pgp-toggle summary {
     cursor: pointer;
     color: var(--highlight-color);
-    font-size: 0.9rem;
-    user-select: none;
+    margin-top: 0.5rem;
 }
 
 .pgp-toggle summary:hover {
-    text-shadow: 0 0 6px var(--highlight-color);
-}
-
-.pgp-ascii-armor {
-    font-size: 0.75rem;
-    color: #00cc52;
-    background: #030803;
-    padding: 1rem;
-    border: 1px dashed var(--dim-text);
-    margin-top: 0.5rem;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-break: break-all;
-}
-
-/* Footer */
-.site-footer {
-    margin-top: 4rem;
-    font-size: 0.8rem;
-    color: var(--dim-text);
-    text-align: center;
-}
-
-/* Ghost Wide/Full Image Compatibility Overrides */
-.kg-width-wide {
-    max-width: 950px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.kg-width-full {
-    width: 100vw;
-    max-width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    color: var(--bg-color);
+    background: var(--highlight-color);
+    display: inline-block;
 }
