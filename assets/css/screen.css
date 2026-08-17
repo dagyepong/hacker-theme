@@ -77,12 +77,15 @@ pre {
     word-wrap: break-word;
 }
 
-/* Strip unwanted dividing lines inside syntax-highlighted blocks */
-pre code, pre span, .hljs span {
+/* Strip unwanted dividing lines, backgrounds, and shadows inside syntax blocks */
+pre code, pre span, .hljs span, pre * {
     border: none !important;
     background: transparent !important;
     box-shadow: none !important;
     text-shadow: none !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    background-image: none !important;
 }
 
 code {
@@ -91,20 +94,23 @@ code {
 }
 
 /* =================================================================
-   Blinking Terminal Cursor Animation
+   Blinking Terminal Cursor Animation (Inline Banner Cursor)
    ================================================================= */
 
 .terminal-cursor,
 .cursor,
 .gh-cursor,
-#cursor {
+#cursor,
+.site-header .cursor,
+.site-description .cursor,
+p:first-of-type .cursor {
     display: inline-block;
     width: 0.55em;
     height: 1.1em;
     background-color: var(--terminal-fg);
     animation: terminal-blink 1s steps(2, start) infinite;
     vertical-align: -0.15em;
-    margin-left: 2px;
+    margin-left: 3px;
     box-shadow: var(--terminal-glow);
 }
 
