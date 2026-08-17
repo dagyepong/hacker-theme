@@ -126,7 +126,7 @@ span.cursor {
 }
 
 /* =================================================================
-   Koenig Editor Layout Classes (Required by Ghost)
+   Koenig Editor Layout Classes & Image Rendering Fix
    ================================================================= */
 
 .kg-width-wide {
@@ -143,11 +143,23 @@ span.cursor {
     margin-right: calc(50% - 50vw);
 }
 
-/* Ensure images inside cards conform to terminal borders */
+/* Safe Image Display Rules (Prevents accidental hiding/zero-sizing) */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Ensure standard and wide/full post images render clearly with terminal framing */
+.post-content img,
+.kg-image-card img,
+.kg-gallery-image img,
 .kg-width-wide img,
 .kg-width-full img {
-    width: 100%;
+    display: block;
+    max-width: 100%;
     height: auto;
     border: 1px solid var(--terminal-dim);
     box-shadow: var(--terminal-box-glow);
+    background-color: var(--terminal-bg);
 }
