@@ -1,6 +1,9 @@
 {
   "name": "hacker-theme",
-  "author": "Nana",
+  "author": {
+    "name": "Nana",
+    "email": "owarenana06@gmail.com"
+  },
   "version": "1.0.0",
   "description": "A retro terminal hacker vibe theme for homelab docs",
   "engines": {
