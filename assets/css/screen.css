@@ -18,12 +18,11 @@ body {
     padding: 2rem;
     position: relative;
     min-height: 100vh;
-    /* Improves font rendering sharpness */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* CRT Scanline & Vignette Effect (Subtler for better readability) */
+/* CRT Scanline & Vignette Effect */
 body::before {
     content: " ";
     display: block;
@@ -91,7 +90,7 @@ a:hover {
 
 .post-excerpt {
     font-size: 0.95rem;
-    color: #d0d0d0; /* Brighter for readability */
+    color: #d0d0d0;
     line-height: 1.6;
     margin: 0;
 }
@@ -222,12 +221,15 @@ a:hover {
 
 /* Terminal Blinking Cursor Animation */
 @keyframes terminal-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
 }
 
-.terminal-cursor {
+.terminal-cursor,
+.system-status::after {
+    content: "_";
     display: inline-block;
-    animation: terminal-blink 1s infinite;
+    animation: terminal-blink 0.8s steps(1, start) infinite;
     color: var(--text-color);
+    font-weight: bold;
 }
