@@ -33,12 +33,49 @@ a:hover {
     text-shadow: 0 0 12px rgba(255, 92, 92, 0.9);
 }
 
-/* Terminal Prompt & Code Blocks */
-pre, code, .terminal-prompt {
+/* =================================================================
+   Homepage & Container Layout Alignment
+   ================================================================= */
+
+.site-wrapper,
+.site-main,
+.post-feed,
+.inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2vw;
+}
+
+.post-card {
+    background-color: var(--terminal-bg);
+    border: 1px solid var(--terminal-dim);
+    box-shadow: var(--terminal-box-glow);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+/* =================================================================
+   Terminal Code Blocks & Readability Fix (Removes Overlapping Glow)
+   ================================================================= */
+
+pre, code {
     background-color: #120808;
     border: 1px solid var(--terminal-dim);
     box-shadow: var(--terminal-box-glow);
     color: var(--terminal-fg);
+    text-shadow: none; /* Disables glowing blur inside code blocks for high clarity */
+}
+
+pre {
+    padding: 1rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+code {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.9em;
 }
 
 /* =================================================================
