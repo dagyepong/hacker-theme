@@ -3,11 +3,11 @@
    ============================================================= */
 
 :root {
-    --bg-color: #0a0a0a;
+    --bg-color: #080808;
     --text-color: #00ff66;
     --highlight-color: #33ff99;
-    --dim-color: #008833;
-    --scanline-color: rgba(0, 0, 0, 0.3);
+    --dim-color: #00aa44;
+    --scanline-color: rgba(0, 0, 0, 0.2);
 }
 
 body {
@@ -18,15 +18,18 @@ body {
     padding: 2rem;
     position: relative;
     min-height: 100vh;
+    /* Improves font rendering sharpness */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* CRT Scanline & Vignette Effect */
+/* CRT Scanline & Vignette Effect (Subtler for better readability) */
 body::before {
     content: " ";
     display: block;
     position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, var(--scanline-color) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, var(--scanline-color) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.01));
     z-index: 99999;
     background-size: 100% 4px, 6px 100%;
     pointer-events: none;
@@ -88,9 +91,39 @@ a:hover {
 
 .post-excerpt {
     font-size: 0.95rem;
-    color: #c0c0c0;
-    line-height: 1.5;
+    color: #d0d0d0; /* Brighter for readability */
+    line-height: 1.6;
     margin: 0;
+}
+
+/* Post Content Readability Overrides */
+.post-content {
+    color: #d0d0d0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.post-content p {
+    margin-bottom: 1.25rem;
+}
+
+.post-content h2, 
+.post-content h3, 
+.post-content h4 {
+    color: var(--text-color);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.post-content ul, 
+.post-content ol {
+    color: #d0d0d0;
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.post-content li {
+    margin-bottom: 0.4rem;
 }
 
 /* Terminal Tags Styling */
@@ -146,7 +179,7 @@ a:hover {
     padding: 1rem;
     font-size: 0.8rem;
     overflow-x: auto;
-    color: #a0a0a0;
+    color: #b0b0b0;
 }
 
 .pgp-toggle summary {
@@ -194,5 +227,7 @@ a:hover {
 }
 
 .terminal-cursor {
+    display: inline-block;
     animation: terminal-blink 1s infinite;
+    color: var(--text-color);
 }
