@@ -1,292 +1,42 @@
 /* =================================================================
-   Hacker-Terminal Ghost Theme Stylesheet
-   ============================================================= */
+   Cyberpunk Terminal Theme - Glow Red Override (Complete)
+   ================================================================= */
 
 :root {
-    --bg-color: #080808;
-    --text-color: #00ff66;
-    --highlight-color: #33ff99;
-    --dim-color: #00aa44;
-    --scanline-color: rgba(0, 0, 0, 0.2);
+    /* Palette Overrides: Phosphor Red */
+    --terminal-bg: #0a0505;          /* Deep obsidian red-tinted dark */
+    --terminal-fg: #ff3333;          /* High-intensity terminal red */
+    --terminal-dim: #991f1f;         /* Faded red for borders/comments */
+    --terminal-accent: #ff5c5c;      /* Bright highlight red */
+    
+    /* Glow Effects */
+    --terminal-glow: 0 0 8px rgba(255, 51, 51, 0.6), 
+                       0 0 20px rgba(255, 51, 51, 0.3);
+    --terminal-box-glow: inset 0 0 10px rgba(255, 51, 51, 0.15),
+                         0 0 15px rgba(255, 51, 51, 0.2);
 }
 
+/* Base Body and CRT Scanline Adjustment */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: "Courier New", Courier, monospace;
-    margin: 0;
-    padding: 2rem;
-    position: relative;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--terminal-bg);
+    color: var(--terminal-fg);
+    text-shadow: var(--terminal-glow);
 }
 
-/* CRT Scanline & Vignette Effect */
-body::before {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0; left: 0; bottom: 0; right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, var(--scanline-color) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.01));
-    z-index: 99999;
-    background-size: 100% 4px, 6px 100%;
-    pointer-events: none;
-}
-
-a {
-    color: var(--text-color);
-    text-decoration: none;
+/* Links and Interactive Elements */
+a, a:visited {
+    color: var(--terminal-accent);
 }
 
 a:hover {
-    background: var(--text-color);
-    color: var(--bg-color);
+    color: var(--terminal-fg);
+    text-shadow: 0 0 12px rgba(255, 92, 92, 0.9);
 }
 
-.terminal-rule {
-    border: none;
-    border-top: 1px dashed var(--dim-color);
-    margin: 1.5rem 0;
-}
-
-.system-status {
-    font-size: 0.85rem;
-    color: var(--dim-color);
-    margin-bottom: 0.5rem;
-}
-
-.post-feed {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.post-card {
-    margin-bottom: 2.5rem;
-    border-left: 2px solid var(--dim-color);
-    padding-left: 1rem;
-}
-
-.post-meta {
-    font-size: 0.85rem;
-    color: var(--dim-color);
-    margin-bottom: 0.25rem;
-}
-
-.post-title {
-    font-size: 1.25rem;
-    margin: 0 0 0.5rem 0;
-}
-
-.post-title a {
-    text-decoration: none;
-}
-
-.post-title a:hover {
-    background: transparent;
-    color: var(--highlight-color);
-    text-decoration: underline;
-}
-
-.post-excerpt {
-    font-size: 0.95rem;
-    color: #d0d0d0;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Post Content Readability Overrides */
-.post-content {
-    color: #d0d0d0;
-    font-size: 0.95rem;
-    line-height: 1.7;
-}
-
-.post-content p {
-    margin-bottom: 1.25rem;
-}
-
-.post-content h2, 
-.post-content h3, 
-.post-content h4 {
-    color: var(--text-color);
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
-
-.post-content ul, 
-.post-content ol {
-    color: #d0d0d0;
-    padding-left: 1.5rem;
-    margin-bottom: 1.25rem;
-}
-
-.post-content li {
-    margin-bottom: 0.4rem;
-}
-
-/* Terminal Tags Styling */
-.post-tags {
-    margin-left: 0.75rem;
-}
-
-.terminal-tag {
-    color: var(--highlight-color);
-    text-decoration: none;
-    font-size: 0.8rem;
-    background: rgba(51, 255, 153, 0.05);
-    padding: 0.1rem 0.4rem;
-    border: 1px dashed var(--highlight-color);
-    transition: all 0.2s ease;
-}
-
-.terminal-tag:hover {
-    background: var(--highlight-color);
-    color: var(--bg-color);
-    text-shadow: none;
-}
-
-/* Contact & GPG Section */
-.terminal-contact-section {
-    max-width: 800px;
-    margin: 3rem auto 0 auto;
-}
-
-.contact-prompt {
-    color: var(--highlight-color);
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.contact-links {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-}
-
-.contact-links li {
-    margin-bottom: 0.3rem;
-}
-
-.contact-links .key {
-    color: var(--dim-color);
-}
-
-.pgp-block, .pgp-ascii-armor {
-    background: rgba(0, 255, 102, 0.03);
-    border: 1px solid var(--dim-color);
-    padding: 1rem;
-    font-size: 0.8rem;
-    overflow-x: auto;
-    color: #b0b0b0;
-}
-
-.pgp-toggle summary {
-    cursor: pointer;
-    color: var(--highlight-color);
-    margin-top: 0.5rem;
-}
-
-.pgp-toggle summary:hover {
-    color: var(--bg-color);
-    background: var(--highlight-color);
-    display: inline-block;
-}
-
-/* =================================================================
-   Ghost Image & Media Rendering Fixes (Critical)
-   ============================================================= */
-
-.post-content img,
-.post-image img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 1.5rem auto;
-    border: 1px solid var(--dim-color);
-    filter: brightness(0.95) contrast(1.05);
-}
-
-/* Koenig Editor Cards */
-.kg-image-card {
-    width: 100%;
-    margin: 2rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.kg-image-card img {
-    width: 100%;
-    height: auto;
-}
-
-.kg-figcaption {
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--dim-color);
-    margin-top: 0.5rem;
-}
-
-.kg-gallery-card {
-    margin: 2rem 0;
-    width: 100%;
-}
-
-.kg-bookmark-card {
-    border: 1px solid var(--dim-color);
-    background: rgba(0, 255, 102, 0.02);
-    padding: 1rem;
-    margin: 2rem 0;
-}
-
-.kg-bookmark-title {
-    color: var(--text-color);
-    font-weight: bold;
-}
-
-.kg-bookmark-description {
-    color: #b0b0b0;
-    font-size: 0.85rem;
-}
-
-/* Koenig Editor Width Requirements */
-.post-content .kg-width-wide {
-    max-width: 1000px;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-}
-
-.post-content .kg-width-full {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-}
-
-.post-content .kg-width-full img,
-.post-content .kg-width-wide img {
-    width: 100%;
-    height: auto;
-}
-
-/* Terminal Blinking Cursor Animation */
-@keyframes terminal-blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
-}
-
-.terminal-cursor,
-.system-status::after {
-    content: "_";
-    display: inline-block;
-    animation: terminal-blink 0.8s steps(1, start) infinite;
-    color: var(--text-color);
-    font-weight: bold;
+/* Terminal Prompt & Code Blocks */
+pre, code, .terminal-prompt {
+    background-color: #120808;
+    border: 1px solid var(--terminal-dim);
+    box-shadow: var(--terminal-box-glow);
+    color: var(--terminal-fg);
 }
