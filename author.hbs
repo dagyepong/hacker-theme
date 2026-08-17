@@ -3,7 +3,7 @@
 <div class="post-feed">
     
     <!-- Author Profile Command Header -->
-    {{#author}}
+    {{#primary_author}}
     <div class="feed-header" style="margin-bottom: 2.5rem; border-left: 2px solid var(--highlight-color); padding-left: 1rem;">
         <p class="system-status">&gt; cat /etc/passwd/author_{{slug}}</p>
         <h1 class="post-title" style="font-size: 1.5rem; margin: 0.5rem 0;">{{name}}</h1>
@@ -15,7 +15,7 @@
             {{#if website}}<span>[web: <a href="{{website}}" target="_blank" rel="noopener" style="text-decoration: underline;">{{website}}</a>]</span>{{/if}}
         </div>
     </div>
-    {{/author}}
+    {{/primary_author}}
 
     <hr class="terminal-rule">
     <div class="system-status">&gt; find ./posts --author=matched_files</div>
