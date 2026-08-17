@@ -58,7 +58,8 @@ a:hover {
    Terminal Code Blocks & Readability Fix (Stripped Line Artifacts)
    ================================================================= */
 
-pre, code, kbd, samp {
+pre, code, kbd, samp, 
+.hljs, .line-numbers, [class*="language-"] {
     background-color: #120808 !important;
     border: 1px solid var(--terminal-dim) !important;
     box-shadow: var(--terminal-box-glow) !important;
@@ -66,6 +67,7 @@ pre, code, kbd, samp {
     text-shadow: none !important;
     background-image: none !important;
     text-decoration: none !important;
+    border-bottom: none !important;
 }
 
 pre {
@@ -73,6 +75,14 @@ pre {
     overflow-x: auto;
     white-space: pre-wrap;
     word-wrap: break-word;
+}
+
+/* Strip unwanted dividing lines inside syntax-highlighted blocks */
+pre code, pre span, .hljs span {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
 }
 
 code {
@@ -85,14 +95,17 @@ code {
    ================================================================= */
 
 .terminal-cursor,
-.cursor {
+.cursor,
+.gh-cursor,
+#cursor {
     display: inline-block;
-    width: 0.5em;
-    height: 1em;
+    width: 0.55em;
+    height: 1.1em;
     background-color: var(--terminal-fg);
     animation: terminal-blink 1s steps(2, start) infinite;
-    vertical-align: middle;
+    vertical-align: -0.15em;
     margin-left: 2px;
+    box-shadow: var(--terminal-glow);
 }
 
 @keyframes terminal-blink {
